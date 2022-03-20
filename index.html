@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--Import Google Icon Font-->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <!--Import materialize.css-->
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="css/materialize.min.css"
+      media="screen,projection"
+    />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="css/main.css"
+      media="screen,projection"
+    />
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <body>
+    <nav>
+      <div class="nav-wrapper container">
+        <a href="#" class="brand-logo">
+          <span>Kaboom</span>
+          <img src="img/cowboy.svg" />
+        </a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <a href="#"
+            >Stage <span id="currentStage">0</span> /
+            <span id="maxStage">6</span></a
+          >
+        </ul>
+      </div>
+    </nav>
+
+    <main class="valign-wrapper">
+      <div class="row">
+        <!-- <div class="row">
+        <div class="preloader-wrapper big active">
+          <div class="spinner-layer spinner-red-only">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+              <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+        <div class="col s6">
+          <canvas
+            class="left"
+            width="800"
+            height="600"
+            id="display-canvas"
+          ></canvas>
+        </div>
+
+        <div class="col s6">
+          Charts
+          <canvas id="chart"></canvas>
+          <div class="progress red" style="height: 10px">
+            <div class="determinate" id="accuracy"></div>
+          </div>
+        </div>
+        <!-- Webcam -->
+        <video
+          id="webcam-video"
+          autoplay
+          width="720"
+          height="1280"
+          style="display: none"
+        ></video>
+        <div class="row center">
+          <canvas
+            width="400"
+            height="300"
+            id="webcam-canvas"
+            style="display: none"
+          ></canvas>
+        </div>
+      </div>
+    </main>
+
+    <footer class="page-footer fixed">
+      <div class="progress">
+        <div class="determinate" style="width: 30%"></div>
+      </div>
+      <div class="row timerRow center">
+        <span id="timer">60:00</span>
+      </div>
+    </footer>
+
+    <!-- Pose Estimation -->
+    <!-- Require the peer dependencies of pose-detection. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-core"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-converter"></script>
+
+    <!-- You must explicitly require a TF.js backend if you're not using the TF.js union bundle. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-webgl"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/pose-detection"></script>
+
+    <!--JavaScript at end of body for optimized loading-->
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+
+    <script type="text/javascript" src="js/charts/chart.min.js"></script>
+
+    <script type="text/javascript" src="js/stage2.js"></script>
+  </body>
+</html>

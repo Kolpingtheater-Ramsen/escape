@@ -1,0 +1,62 @@
+html {
+  font-family: 'Press Start 2P', cursive !important;
+  background-color: #efe8e6;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+nav {
+  background-color: #800b09;
+}
+
+nav a {
+  color: #fffc4a !important;
+}
+
+nav .brand-logo {
+  height: 64px;
+  color: #fffc4a;
+}
+
+nav img {
+  height: 48px;
+  margin-top: 8px;
+}
+
+main {
+  flex: 1 0 auto;
+  height: 100%;
+}
+
+.row {
+  width: 100%;
+}
+
+.page-footer {
+  padding: 0;
+  background-color: #800b09;
+  color: #fffc4a;
+  height: 32px;
+}
+
+.page-footer .progress {
+  height: 32px;
+  margin: 0;
+  background-color: #800b09;
+}
+
+.page-footer .progress .determinate {
+  background-color: red;
+}
+
+.timerRow {
+  position: absolute;
+  bottom: 0;
+  margin: 0;
+  line-height: 32px;
+  width: 100%;
+}
