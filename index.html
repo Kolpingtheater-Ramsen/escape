@@ -45,9 +45,9 @@
       </div>
     </nav>
 
-    <main class="valign-wrapper">
-      <div class="row">
-        <!-- <div class="row">
+    <main class="valign-wrapper center row" id="game" style="margin:0;">
+      <div class="row" id="preloader">
+        <div class="row">
         <div class="preloader-wrapper big active">
           <div class="spinner-layer spinner-red-only">
             <div class="circle-clipper left">
@@ -61,53 +61,16 @@
             </div>
           </div>
         </div>
-      </div> -->
-
-        <div class="col s6">
-          <canvas
-            class="left"
-            width="800"
-            height="600"
-            id="display-canvas"
-          ></canvas>
-        </div>
-
-        <div class="col s6">
-          Charts
-          <canvas id="chart"></canvas>
-          <div class="progress red" style="height: 10px">
-            <div class="determinate" id="accuracy"></div>
-          </div>
-          <div class="progress" style="height: 10px">
-            <div class="determinate" id="progress"></div>
-          </div>
-        </div>
-        <!-- Webcam -->
-        <video
-          id="webcam-video"
-          autoplay
-          width="720"
-          height="1280"
-          style="display: none"
-        ></video>
-        <div class="row center">
-          <canvas
-            width="400"
-            height="300"
-            id="webcam-canvas"
-            style="display: none"
-          ></canvas>
-        </div>
       </div>
     </main>
 
     <footer class="page-footer fixed">
       <div class="progress">
         <div class="determinate" style="width: 30%"></div>
-      </div>
-      <div class="row timerRow center">
         <span id="timer">60:00</span>
       </div>
+      <!-- <div class="row timerRow center">
+      </div> -->
     </footer>
 
     <!-- Pose Estimation -->
@@ -126,6 +89,5 @@
 
     <script type="text/javascript" src="js/charts/chart.min.js"></script>
 
-    <script type="text/javascript" src="js/stage2.js"></script>
   </body>
 </html>

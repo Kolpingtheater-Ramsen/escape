@@ -1,0 +1,33 @@
+<div class="col s6">
+  <canvas class="left" width="800" height="600" id="display-canvas"></canvas>
+</div>
+
+<div class="col s6 chart">
+  Charts
+  <canvas id="chart"></canvas>
+  <div class="progress red" style="height: 10px">
+    <div class="determinate" id="accuracy"></div>
+  </div>
+  <div class="progress" style="height: 10px">
+    <div class="determinate" id="progress"></div>
+  </div>
+</div>
+
+<div class="col s12">
+  <!-- Webcam -->
+  <video
+    id="webcam-video"
+    autoplay
+    width="720"
+    height="1280"
+    style="display: none"
+  ></video>
+  <div class="row center">
+    <canvas
+      width="400"
+      height="300"
+      id="webcam-canvas"
+      style="display: none"
+    ></canvas>
+  </div>
+</div>
