@@ -1,0 +1,35 @@
+<!-- Webcam -->
+<div class="row">
+  <div class="col s6">
+    <video
+      id="droidcam-video"
+      autoplay
+      width="720"
+      height="1280"
+      style="display: none"
+    ></video>
+  </div>
+
+  <div class="col s6">
+    <div class="container">
+      <input
+        placeholder="_ _ _ _ _ _ _"
+        value="_ _ _ _ _ _ _"
+        onkeyup="formatInput(this)"
+        digits="7"
+      />
+      <input
+        placeholder="_ _ _ _ _ _ _ _"
+        value="_ _ _ _ _ _ _ _"
+        onkeyup="formatInput()"
+        digits="8"
+      />
+      <input
+        placeholder="_ _ _ _"
+        value="_ _ _ _"
+        onkeyup="formatInput()"
+        digits="4"
+      />
+    </div>
+  </div>
+</div>
