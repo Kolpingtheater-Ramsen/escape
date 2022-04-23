@@ -1,7 +1,33 @@
-function formatInput(event) {
-    // const element = event
-    // const digits = element.getAttribute('digits')
-    // const values = element.value.split("").filter(e => e != " " || e != "_")
+const video = document.querySelector('#droidcam-video')
 
-    // element.value = [...values, ...new Array(digits - values.length).fill(0).map(e => "_")].join(" ")
+navigator.mediaDevices
+  .getUserMedia({
+    video: true,
+  })
+  .then((stream) => {
+    video.srcObject = stream
+  })
+
+let correct = [false, false, false]
+
+function formatInput(event) {
+    const element = event
+    element.value = element.value.split("").filter(e => e != " ").join(" ") 
+    element.nextElementSibling.innerText = ` ${Math.floor((element.value.length + 1) / 2)} / ${(element.maxLength + 1) / 2}`
+
+    const target = element.getAttribute('target')
+    const index = element.getAttribute('indx')
+    if (target == element.value.split(" ").join("").toLowerCase()) {
+        element.nextElementSibling.style.color = 'green'
+        element.style.color = 'green'
+        correct[index] = true
+    } else {
+        element.nextElementSibling.style.color = 'black'
+        element.style.color = 'black'
+        correct[index] = false
+    }
+
+    if (correct.every(e => e)) {
+        console.log('done')
+    }
 }

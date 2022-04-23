@@ -4,32 +4,36 @@
     <video
       id="droidcam-video"
       autoplay
-      width="720"
-      height="1280"
-      style="display: none"
     ></video>
   </div>
 
   <div class="col s6">
-    <div class="container">
+    <h3>Antwort</h3>
+    <div class="container" id="stage4input">
       <input
+        target="klapper"
         placeholder="_ _ _ _ _ _ _"
-        value="_ _ _ _ _ _ _"
+        maxlength="13"
         onkeyup="formatInput(this)"
-        digits="7"
+        indx = 0
       />
+      <span>0 / 7</span>
       <input
-        placeholder="_ _ _ _ _ _ _ _"
-        value="_ _ _ _ _ _ _ _"
-        onkeyup="formatInput()"
-        digits="8"
+        target="schlangen"
+        placeholder="_ _ _ _ _ _ _ _ _"
+        maxlength="17"
+        onkeyup="formatInput(this)"
+        indx = 1
       />
+      <span>0 / 9</span>
       <input
+        target="biss"
         placeholder="_ _ _ _"
-        value="_ _ _ _"
-        onkeyup="formatInput()"
-        digits="4"
+        maxlength="7"
+        onkeyup="formatInput(this)"
+        indx = 2
       />
+      <span>0 / 4</span>
     </div>
   </div>
 </div>
