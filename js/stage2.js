@@ -1,5 +1,6 @@
-if (window.location.hash == '#mmsolved') {
-  // Next one
-} else {
-  window.location.href = 'stages/mm-js/index.html'
-}
+// window.location.href = 'stages/mm-js/index.html'
+
+window.addEventListener('message', (e) => {
+  console.log(e)
+  if (e.data === 'minerman') engine.nextStage()
+})

@@ -6,22 +6,26 @@ const engine = {
   stage: 0,
   stageTime: 0,
   stageTimeMax: 0,
+  beeper: null,
+  timerInterval: null,
 
   init: function () {
     this.stage = 0
     this.stageTime = 0
     this.stageTimeMax = 0
+
+    this.loadStage(0)
   },
 
   start: function () {
     this.stage = 1
     this.stageTime = Date.now()
-    this.stageTimeMax = this.stageTime + 1000 * 60 * 60
+    this.stageTimeMax = this.stageTime + 1000 * 60 * 60 + 1000
     localStorage.setItem('stage', this.stage)
     localStorage.setItem('stageTime', this.stageTime)
     localStorage.setItem('stageTimeMax', this.stageTimeMax)
 
-    loadStage(this.stage)
+    this.loadStage(this.stage)
     plantSound.play()
 
     plantSound.onended = () => {
@@ -29,6 +33,10 @@ const engine = {
         beepSound.play()
       }, 1000)
     }
+
+    this.timerInterval = setInterval(() => {
+      this.updateTimer()
+    }, 1000)
   },
 
   resume: function () {
@@ -52,6 +60,7 @@ const engine = {
       const script = document.createElement('script')
       script.src = `js/stage${stage}.js`
       document.getElementById('currentStage').innerText = stage
+      if (stage && stage > 0 && stage < 7) new Audio(`audio/riddle${stage}.mp3`).play()
       setTimeout(() => {
         document.body.appendChild(script)
         const fadeIn = setInterval(() => {
@@ -76,7 +85,25 @@ const engine = {
         this.loadStage(this.stage)
       }
     }, 10)
+  },
+
+  updateTimer: function () {
+    const now = Date.now()
+    const timeLeft = this.stageTimeMax - now
+    const minutes = Math.floor(timeLeft / 1000 / 60)
+    const seconds = Math.floor(timeLeft / 1000) % 60
+    const time = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`
+    document.getElementById('timer').innerText = time
+
+    // Update Progress
+    const progress = (this.stageTimeMax - now) / (this.stageTimeMax - this.stageTime)
+    document.getElementById('progress').style.width = `${100 - progress * 100}%`
+
+    if (timeLeft <= 0) {
+      clearInterval(this.timerInterval)
+      clearInterval(this.beeper)
+    }
   }
 }
 
-engine.loadStage(1)
+engine.loadStage(0)

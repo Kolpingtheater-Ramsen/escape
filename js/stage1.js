@@ -3,6 +3,6 @@ document.getElementById('stage1InputContainer').addEventListener('keyup', (e) =>
     if (e.target.value === 'KABOOM') {
         e.target.setAttribute('disabled', true)
         e.target.style.color = 'green'
-        console.log('done')
+        engine.nextStage()
     }
 })

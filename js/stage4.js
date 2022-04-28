@@ -1,11 +1,16 @@
 const videoStage4 = document.querySelector('#droidcam-video')
 
-navigator.mediaDevices
-  .getUserMedia({
-    video: true,
-  })
-  .then((stream) => {
-    videoStage4.srcObject = stream
+// Get cam #2
+navigator.mediaDevices.enumerateDevices()
+  .then(function (devices) {
+    console.log(devices)
+    // DroidCam Source 3
+    const droidcam = devices.find(e => e.label.includes('DroidCam'))
+    navigator.mediaDevices
+      .getUserMedia({ video: { deviceId: droidcam.deviceId } })
+      .then((stream) => {
+        videoStage4.srcObject = stream
+      })
   })
 
 let correct = [false, false, false]
@@ -28,6 +33,6 @@ function formatInput(event) {
   }
 
   if (correct.every(e => e)) {
-    console.log('done')
+    engine.nextStage()
   }
 }

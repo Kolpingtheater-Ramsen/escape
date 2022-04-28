@@ -214,7 +214,7 @@ tf.ready().then(() => {
           progressBar.style.width = Math.min(score / 3, 1) * 100 + '%'
 
           if (score > 3) {
-            alert('SOLVED')
+            engine.nextStage()
           }
         })
       }

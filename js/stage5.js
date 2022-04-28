@@ -1,14 +1,13 @@
 const videoStage5 = document.querySelector('#videoStage5')
 const canvasStage5 = document.querySelector('#canvasStage5')
-const ctx = canvasStage5.getContext('2d')
+const ctx5 = canvasStage5.getContext('2d')
 const keyCounter = document.getElementById('keyCounter')
 
-const cords = [
+const cordsStage5 = [
   [638, 404],
   [214, 351],
   [484, 34],
 ]
-
 
 let key = 0
 canvasStage5.addEventListener('click', (e) => {
@@ -17,7 +16,7 @@ canvasStage5.addEventListener('click', (e) => {
 
   console.log(x, y)
 
-  const [targetX, targetY] = cords[key]
+  const [targetX, targetY] = cordsStage5[key]
   const diffX = Math.abs(x - targetX)
   const diffY = Math.abs(y - targetY)
 
@@ -28,7 +27,8 @@ canvasStage5.addEventListener('click', (e) => {
     key++
 
     if (key > 2) {
-      return console.log("Solved")
+      clearInterval(chromaKey5)
+      return engine.nextStage()
     }
 
     keyCounter.innerText = key
@@ -48,13 +48,13 @@ videoStage5.addEventListener('loadeddata', () => {
   canvasStage5.width = videoStage5.videoWidth * 1.65
   canvasStage5.height = videoStage5.videoHeight * 1.4
   setInterval(() => {
-    chromaKey()
+    chromaKey5()
   }, 100)
 })
 
-function chromaKey() {
-  ctx.drawImage(videoStage5, 0, 0, canvasStage5.width, canvasStage5.height)
-  const imageData = ctx.getImageData(0, 0, canvasStage5.width, canvasStage5.height)
+function chromaKey5() {
+  ctx5.drawImage(videoStage5, 0, 0, canvasStage5.width, canvasStage5.height)
+  const imageData = ctx5.getImageData(0, 0, canvasStage5.width, canvasStage5.height)
   const dataLength = imageData.data.length / 4
   for (let i = 0; i < dataLength; i++) {
     const offset = i * 4
@@ -67,7 +67,7 @@ function chromaKey() {
     const targetG = 210
     const targetB = 120
 
-    const diff = 100
+    const diff = 25
     const diffR = Math.abs(red - targetR)
     const diffG = Math.abs(green - targetG)
     const diffB = Math.abs(blue - targetB)
@@ -76,5 +76,5 @@ function chromaKey() {
       imageData.data[offset + 3] = 0
     }
   }
-  ctx.putImageData(imageData, 0, 0)
+  ctx5.putImageData(imageData, 0, 0)
 }
