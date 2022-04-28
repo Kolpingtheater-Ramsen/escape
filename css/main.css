@@ -58,10 +58,6 @@ main {
   line-height: 32px;
 }
 
-.row {
-  width: 100%;
-}
-
 .chart {
   flex: inherit;
   width: 100%;
@@ -76,4 +72,12 @@ main {
 
 #stage4input h3 {
   margin-bottom: 10px;
+}
+
+#stage1input input {
+  font-size: 50px;
+  font-family: 'Press Start 2P', cursive !important;
+  text-align: center;
+  background: white;
+  height: 100px;
 }
