@@ -2,25 +2,6 @@ const plantSound = new Audio('audio/csgobombplant.mp3')
 const beepSound = new Audio('audio/csgobeep.mp3')
 const gameWindow = document.getElementById('game')
 
-
-const VIDEO_WIDTH = 400
-const VIDEO_HEIGHT = 300
-
-const detectorConfig = {
-  architecture: 'ResNet50',
-  outputStride: 16,
-  inputResolution: { width: VIDEO_WIDTH, height: VIDEO_HEIGHT },
-  multiplier: 1,
-}
-
-tf.ready().then(() => {
-  poseDetection
-    .createDetector(poseDetection.SupportedModels.PoseNet, detectorConfig)
-    .then((detector) => {
-      engine.detector = detector
-    })
-})
-
 const engine = {
   stage: 0,
   stageTime: 0,
@@ -79,7 +60,7 @@ const engine = {
       const script = document.createElement('script')
       script.src = `js/stage${stage}.js`
       document.getElementById('currentStage').innerText = stage
-      if (stage && stage > 0 && stage < 7) new Audio(`audio/riddle${stage}.mp3`).play()
+      if (stage && stage > 0 && stage < 6) new Audio(`audio/riddle${stage}.mp3`).play()
       setTimeout(() => {
         document.body.appendChild(script)
         const fadeIn = setInterval(() => {
