@@ -43,7 +43,7 @@ if (!('webkitSpeechRecognition' in window)) {
 
         // Remove all non-alphanumeric characters expect ä, ö, ü, ß
         document.getElementById('output').innerHTML = speech
-        recognition.stop()
+        // recognition.stop()
         micIcon.style.display = 'none'
         if (score >= 0.95) {
           engine.nextStage()
@@ -51,7 +51,7 @@ if (!('webkitSpeechRecognition' in window)) {
         } else {
           // Set text red
           setTimeout(() => {
-            recognition.start()
+            // recognition.start()
             intermediate = ''
           }, 1000)
         }
