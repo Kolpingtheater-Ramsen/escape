@@ -5,6 +5,8 @@ const target =
     .join('')
     .toLowerCase()
 
+let recognition
+
 const micIcon = document.getElementById('mic-icon')
 
 // Check if the browser supports the SpeechRecognition API
@@ -14,7 +16,7 @@ if (!('webkitSpeechRecognition' in window)) {
   )
 } else {
   // Create a new SpeechRecognition instance
-  const recognition = new webkitSpeechRecognition()
+  recognition = new webkitSpeechRecognition()
   recognition.continuous = true // Enable continuous recognition mode
   recognition.interimResults = true // Return interim results
   recognition.lang = 'de-DE' // Set the language to German
@@ -68,11 +70,11 @@ if (!('webkitSpeechRecognition' in window)) {
     console.error('Speech recognition error:', event.error)
   }
 
-  // recognition.onend = () => {
-  //   console.log('Speech recognition ended')
-  //   // Restart the recognition when it ends
-  //   recognition.start()
-  // }
+  recognition.onend = () => {
+    console.log('Speech recognition ended')
+    // Restart the recognition when it ends
+    recognition.start()
+  }
 
   // Start the speech recognition
   recognition.start()
