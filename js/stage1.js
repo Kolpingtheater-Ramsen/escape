@@ -24,7 +24,7 @@ let warmedUp = false
 async function setup() {
   if (!model)
     model = await tfTask.ObjectDetection.CocoSsd.TFJS.load({
-      backend: 'webgl',
+      backend: 'wasm',
     })
 
   // Grab frame from webcam
